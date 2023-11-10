@@ -9,6 +9,7 @@ public enum NetworkError: Error {
 }
 
 public class NetworkService {
+    public init() { }
    public func fetch<T: Codable>(url: URL, parse: @escaping (Data) -> T?, completion: @escaping (Result<T?, NetworkError>) -> Void) {
         
         let request = URLRequest(url: url)
