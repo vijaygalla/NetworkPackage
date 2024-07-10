@@ -13,6 +13,7 @@ public class NetworkService {
    public func fetch<T: Codable>(url: URL, parse: @escaping (Data) -> T?, completion: @escaping (Result<T?, NetworkError>) -> Void) {
         
         let request = URLRequest(url: url)
+       
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil, (response as? HTTPURLResponse)?.statusCode == 200 else {
                 completion(.failure(.decodingError))
